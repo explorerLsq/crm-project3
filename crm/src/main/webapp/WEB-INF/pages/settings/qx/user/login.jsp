@@ -16,9 +16,10 @@
 <script type="text/javascript">
 	$(function () {
 		// 给浏览器窗口添加键盘按下事件（主要目的：回车键执行登录）
+		//加$() 获取对象的jquery对象
 		$(window).keydown(function (event) {
 			// 实现功能：按下回车键，则提交登录请求（回车键对应的值为13）
-			if (event.keyCode == 13) {
+			if (event.keyCode === 13) {
 				$("#loginBtn").click(); // 通过该代码自动执行登录单击事件
 			}
 		});
@@ -27,13 +28,16 @@
 			// 收集表单参数
 			var loginAct = $.trim($("#loginAct").val());
 			var loginPwd = $.trim($("#loginPwd").val());
+			//使用jQuery获取指定元素的指定属性的值
+			//选择器.attr("属性名"); 用来获取那些值不是true/false的属性值
+			//选择器.prop("属性名"); 用来获取值是true/false的属性值  checkBox  下拉列表-是否 等等
 			var isRemPwd = $("#isRemPwd").prop("checked");
 			// 表单验证
-			if (loginAct == "") {
+			if (loginAct === "") {
 				alert("用户名不能为空");
 				return;
 			}
-			if (loginPwd == "") {
+			if (loginPwd === "") {
 				alert("密码不能为空");
 				return;
 			}
@@ -48,7 +52,7 @@
 				type:'post', // 使用get和post都可以，但是get会有缓存，修改前端界面候需要清除缓存，不方便
 				dataType:'json',
 				success:function (data) { // 发送请求成功后接收到的后台响应
-					if (data.code == "1") { // 登录成功，跳转至业务主页面
+					if (data.code === "1") { // 登录成功，跳转至业务主页面
 						window.location.href = "workbench/index.do";
 					} else { // 登录失败，输出响应信息
 						$("#msg").text(data.message);

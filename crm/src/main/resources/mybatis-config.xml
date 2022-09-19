@@ -12,7 +12,7 @@
         <package name="com.yang.crm.model"/>
     </typeAliases>
     <!--指向mapper文件所在包-->
-    <mappers>
-        <package name="com.yang.crm.mapper"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <package name="com.yang.crm.settings.mapper"/>-->
+<!--    </mappers>-->
 </configuration>
